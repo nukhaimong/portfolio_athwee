@@ -13,7 +13,6 @@ import {
   imageVariants,
   textVariants,
 } from '@/lib/animationVariants';
-import Link from 'next/link';
 
 export default function Hero() {
   return (
