@@ -13,6 +13,7 @@ import {
   imageVariants,
   textVariants,
 } from '@/lib/animationVariants';
+import Link from 'next/link';
 
 export default function Hero() {
   return (
@@ -69,26 +70,28 @@ export default function Hero() {
             variants={textVariants}
             className="flex flex-wrap items-center gap-4 pt-2"
           >
-            <motion.button
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-              className="bg-green-600 hover:bg-green-700 text-white px-7 py-3 rounded-full text-sm font-medium transition-all shadow-lg shadow-green-200 dark:shadow-green-900/30 flex items-center gap-2"
-            >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <Link href="#contact">
+              <motion.button
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+                className="bg-green-600 hover:bg-green-700 text-white px-7 py-3 rounded-full text-sm font-medium transition-all shadow-lg shadow-green-200 dark:shadow-green-900/30 flex items-center gap-2"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-                />
-              </svg>
-              Let's Collaborate
-            </motion.button>
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                  />
+                </svg>
+                Let's Collaborate
+              </motion.button>
+            </Link>
             <a href={'https://www.youtube.com/@AthweeMarma'} target="blank">
               <motion.button
                 whileHover={{ scale: 1.04 }}

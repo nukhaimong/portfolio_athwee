@@ -56,7 +56,7 @@ export default function Videos() {
   ];
 
   return (
-    <section className="py-20 px-4 md:px-8">
+    <section className="py-20 px-4 md:px-8" id="works">
       <motion.div
         className="max-w-6xl mx-auto"
         initial="hidden"

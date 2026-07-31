@@ -95,7 +95,10 @@ export default function Experience() {
   const displayExperiences = [...experiences].reverse();
 
   return (
-    <section className="py-20 px-4 md:px-8 relative overflow-hidden">
+    <section
+      className="py-20 px-4 md:px-8 relative overflow-hidden"
+      id="experience"
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-b from-green-50/30 via-transparent to-emerald-50/30 dark:from-green-950/10 dark:to-emerald-950/10 pointer-events-none" />
 

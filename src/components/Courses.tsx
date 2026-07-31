@@ -130,7 +130,7 @@ export default function Courses() {
         className="space-y-12"
       >
         {/* Section Header */}
-        <div className="text-center space-y-4 max-w-3xl mx-auto">
+        <div className="text-center space-y-4 max-w-3xl mx-auto" id="courses">
           <motion.div variants={textVariants}>
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-50 dark:bg-green-950/40 text-green-700 dark:text-green-300 text-sm font-medium border border-green-200 dark:border-green-800/50">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
