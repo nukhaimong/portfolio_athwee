@@ -31,11 +31,33 @@ export default function Experience() {
   const experiences = [
     {
       id: 1,
+      company: 'Icon',
+      role: 'Video Editor & Content Creator',
+      period: '2024 - Present',
+      year: '2024',
+      location: 'Remote / Global',
+      isCurrent: true,
+      description:
+        'Working with international clients to produce high-quality video content, UGC ads, and brand storytelling pieces. Specializing in AI-enhanced editing workflows.',
+      achievements: [
+        'Produced 100+ videos for 15+ global clients',
+        'Achieved 500% ROI for clients through UGC ad campaigns',
+        'Implemented AI tools to reduce editing time by 70%',
+      ],
+      color: 'from-emerald-500 to-green-500',
+      badgeBg: 'bg-emerald-100 dark:bg-emerald-950/50',
+      badgeText: 'text-emerald-700 dark:text-emerald-300',
+      borderColor: 'border-emerald-200 dark:border-emerald-800/30',
+      icon: '🚀',
+    },
+    {
+      id: 2,
       company: 'Connekt Studio',
       role: 'Lead Video Editor & Filmmaker',
       period: '2020 - 2021',
       year: '2020',
       location: 'Bangladesh',
+      isCurrent: false,
       description:
         'Led video production for a creative agency specializing in brand storytelling, documentaries, and commercial content for local and international clients.',
       achievements: [
@@ -50,12 +72,13 @@ export default function Experience() {
       icon: '🎬',
     },
     {
-      id: 2,
+      id: 3,
       company: 'BabyLoveGrowth',
       role: 'Content Creator & Video Editor',
       period: '2021 - 2022',
       year: '2021',
       location: 'Remote',
+      isCurrent: false,
       description:
         'Developed engaging content strategy for a growing parenting brand. Created UGC-style videos, educational content, and brand storytelling pieces.',
       achievements: [
@@ -70,12 +93,13 @@ export default function Experience() {
       icon: '❤️',
     },
     {
-      id: 3,
+      id: 4,
       company: 'Nas Daily',
       role: 'Video Editor',
       period: '2022 - 2023',
       year: '2022',
       location: 'Remote / Global',
+      isCurrent: false,
       description:
         'Created content for a global audience of 30M+ followers. Edited documentaries, short-form videos, and social media content that reached millions across platforms.',
       achievements: [
@@ -91,8 +115,14 @@ export default function Experience() {
     },
   ];
 
-  // Reverse for display (newest first)
-  const displayExperiences = [...experiences].reverse();
+  // Sort experiences: Current first, then by year (newest first)
+  const displayExperiences = [...experiences].sort((a, b) => {
+    // If one is current, it comes first
+    if (a.isCurrent && !b.isCurrent) return -1;
+    if (!a.isCurrent && b.isCurrent) return 1;
+    // If both are current or both are not, sort by year (newest first)
+    return parseInt(b.year) - parseInt(a.year);
+  });
 
   return (
     <section
@@ -147,15 +177,30 @@ export default function Experience() {
                   }`}
                 >
                   <motion.div
-                    className={`bg-white dark:bg-slate-800 p-6 rounded-2xl border ${exp.borderColor} shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 text-left`}
+                    className={`bg-white dark:bg-slate-800 p-6 rounded-2xl border ${exp.borderColor} shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 text-left ${
+                      exp.isCurrent
+                        ? 'ring-2 ring-emerald-400 dark:ring-emerald-500 ring-offset-2 dark:ring-offset-slate-900'
+                        : ''
+                    }`}
                     whileHover={{ scale: 1.01 }}
                     transition={{ type: 'spring', stiffness: 300 }}
                   >
-                    {/* Period Badge */}
-                    <div
-                      className={`inline-block px-3 py-1 rounded-full ${exp.badgeBg} ${exp.badgeText} text-xs font-semibold mb-3`}
-                    >
-                      {exp.period}
+                    {/* Period Badge with Current Indicator */}
+                    <div className="flex items-center gap-2 mb-3">
+                      <div
+                        className={`inline-block px-3 py-1 rounded-full ${exp.badgeBg} ${exp.badgeText} text-xs font-semibold`}
+                      >
+                        {exp.period}
+                      </div>
+                      {exp.isCurrent && (
+                        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-semibold border border-emerald-200 dark:border-emerald-800/50">
+                          <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                          </span>
+                          Currently Working
+                        </div>
+                      )}
                     </div>
 
                     {/* Company & Role */}
@@ -225,7 +270,9 @@ export default function Experience() {
                 {/* Timeline Node Icon (Left side on mobile, Centered on desktop) */}
                 <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex flex-col items-center z-10">
                   <motion.div
-                    className={`w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br ${exp.color} flex items-center justify-center text-xl md:text-2xl shadow-lg border-4 border-white dark:border-slate-900`}
+                    className={`w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br ${exp.color} flex items-center justify-center text-xl md:text-2xl shadow-lg border-4 border-white dark:border-slate-900 ${
+                      exp.isCurrent ? 'ring-4 ring-emerald-400/50' : ''
+                    }`}
                     whileHover={{ scale: 1.15 }}
                     transition={{ type: 'spring', stiffness: 400 }}
                   >

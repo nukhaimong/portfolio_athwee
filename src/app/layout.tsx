@@ -2,10 +2,17 @@
 import type { Metadata } from 'next';
 import { Inter, Geist } from 'next/font/google';
 import './globals.css';
-import LayoutWrapper from '@/components/LayoutWrapper';
-import { cn } from '@/lib/utils';
+import { Poppins } from 'next/font/google';
+
 import { ThemeProvider } from '@/components/ui/them-provider';
 import Navbar from '@/components/ui/Navbar';
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  display: 'swap',
+  variable: '--font-poppins',
+});
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -22,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={geist.className}>
       <body>
         <ThemeProvider
           attribute="class"
